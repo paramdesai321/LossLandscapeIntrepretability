@@ -31,7 +31,7 @@ def compute_2d_loss_landscape(
     d2,
     x_range=(-1.0, 1.0),
     y_range=(-1.0, 1.0),
-    steps=21,
+    steps=51,
     bn_batches=5,
     eval_batches=10,
 ):
@@ -262,11 +262,11 @@ def main():
     # ==================================================
 
     result_dir = (
-        "results/2d_sgd_nesterov"
+        "results/2d_sgd_no_momentum/51_resolution"
     )
 
     plot_dir = (
-        "plots/2d_sgd_nesterov"
+        "plots/2d_sgd_no_momentum/51_resolution"
     )
 
     os.makedirs(
@@ -284,7 +284,7 @@ def main():
     # ==================================================
 
     reference_ckpt = (
-        "training/checkpoints/sgd_nesterov/run2/"
+        "training/checkpoints/sgd_no_momentum/"
         "resnet56_epoch_300.pth"
     )
 
@@ -406,7 +406,7 @@ def main():
         )
 
         ckpt_path = (
-            "training/checkpoints/sgd_nesterov/run2/"
+            "training/checkpoints/sgd_no_momentum/"
             f"resnet56_epoch_{epoch}.pth"
         )
 
@@ -458,7 +458,7 @@ def main():
                 x_range=(-1.0, 1.0),
                 y_range=(-1.0, 1.0),
 
-                steps=21,
+                steps=51,
 
                 bn_batches=5,
                 eval_batches=10,
@@ -479,7 +479,7 @@ def main():
             save_path=train_plot_path,
             title=(
                 f"2D Train Loss Landscape — Epoch {epoch}\n"
-                f"ResNet-56 No-Skip — SGD + Nesterov"
+                f"ResNet-56 No-Skip — SGD No Momentum"
             ),
             use_log=False,
         )
@@ -511,7 +511,7 @@ def main():
                 x_range=(-1.0, 1.0),
                 y_range=(-1.0, 1.0),
 
-                steps=21,
+                steps=51,
 
                 bn_batches=5,
                 eval_batches=10,
@@ -532,7 +532,7 @@ def main():
             save_path=test_plot_path,
             title=(
                 f"2D Test Loss Landscape — Epoch {epoch}\n"
-                f"ResNet-56 No-Skip — SGD + Nesterov"
+                f"ResNet-56 No-Skip — SGD No Momentum"
             ),
             use_log=False,
         )

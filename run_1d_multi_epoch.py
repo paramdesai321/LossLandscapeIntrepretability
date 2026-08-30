@@ -15,13 +15,14 @@ def main():
     # 1. Checkpoints to inspect
     # ==================================================
 
-    epochs = [
-        5, 25, 50, 100,
-        145, 150, 155,
-        220, 225, 230,
-        270, 275, 280,
-        300,
-    ]
+    #epochs = [
+    #    5, 25, 50, 100,
+    #    145, 150, 155,
+    #    220, 225, 230,
+    #    270, 275, 280,
+    #    300,
+    #]  
+    epochs = [5,300]
 
     criterion = nn.CrossEntropyLoss()
 
@@ -29,8 +30,8 @@ def main():
     # 2. Output directories
     # ==================================================
 
-    output_dir = "results/1d_sgd_nesterov"
-    plot_dir = "plots/1d_sgd_nesterov"
+    output_dir = "results/1d_sgd_no_momentum"
+    plot_dir = "plots/1d_sgd_no_momentum"
 
     os.makedirs(
         output_dir,
@@ -47,7 +48,7 @@ def main():
     # ==================================================
 
     reference_ckpt = (
-        "training/checkpoints/sgd_nesterov/run2/"
+        "training/checkpoints/sgd_no_momentum/"
         "resnet56_epoch_300.pth"
     )
 
@@ -99,7 +100,7 @@ def main():
         print("=" * 60)
 
         ckpt_path = (
-            f"training/checkpoints/sgd_nesterov/run2/"
+            f"training/checkpoints/sgd_no_momentum/"
             f"resnet56_epoch_{epoch}.pth"
         )
 
