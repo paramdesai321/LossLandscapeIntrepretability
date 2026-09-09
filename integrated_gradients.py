@@ -33,13 +33,16 @@ def compute_integrated_gradients(
 
     return attributions, delta
 
+
 def visualize_ig(
     model,
     image,
     label,
     device,
     n_steps=50,
-    use_abs=True
+    use_abs=True,
+    save_path=None,
+    title=None
 ):
     attributions, delta = compute_integrated_gradients(
         model=model,
@@ -149,9 +152,19 @@ def visualize_ig(
     )
     axes[2].axis("off")
 
-    plt.tight_layout()
-    plt.show()
+    if title is not None:
+        fig.suptitle(title)
 
+    plt.tight_layout()
+
+    if save_path is not None:
+        plt.savefig(
+            save_path,
+            dpi=300,
+            bbox_inches="tight"
+        )
+
+    plt.close()
     print(
         "IG convergence delta:",
         float(delta.detach().cpu().item())

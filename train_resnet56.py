@@ -124,11 +124,11 @@ print("Model device:", next(model.parameters()).device)
 criterion = nn.CrossEntropyLoss()
 
 
-optimizer = torch.optim.SGD(
+optimizer = torch.optim.Adam(
     model.parameters(),
-    lr=0.1,          # typical starting LR for ResNet on CIFAR-10
-    momentum=0.9,    # Changing momentum to match Li et al to reproduce-like Figure 1(a)
-    nesterov=True,
+    lr=1e-3,
+    betas=(0.9, 0.999),
+    eps=1e-8,
     weight_decay=5e-4
 )
 
@@ -164,7 +164,7 @@ if __name__ == '__main__':
     val_accuracies = []
     import os
 
-    os.makedirs("checkpoints/sgd_nesterov", exist_ok=True)
+    os.makedirs("training/checkpoints/adam/", exist_ok=True)
     epoch_bar = tqdm(range(epochs), desc="Training", unit="epoch")
 
     for epoch in epoch_bar:
@@ -254,9 +254,9 @@ if __name__ == '__main__':
                 "val_acc": val_acc,
                 "lr": scheduler.get_last_lr()[0],
                 "seed": 42,
-                "optimizer": "SGD+Nesterov",
+                "optimizer": "Adam",
                 "rng_state": torch.get_rng_state(),
-            }, f"checkpoints/sgd_nesterov/resnet56_epoch_{epoch+1}.pth")
+            }, f"training/checkpoints/adam/resnet56_epoch_{epoch+1}.pth")
         percent_done = 100 * (epoch + 1) / epochs
 
         epoch_bar.set_postfix({
@@ -275,14 +275,14 @@ if __name__ == '__main__':
 
     import json
 
-    with open("training_history.json", "w") as f:
+    with open("training_history_adam.json", "w") as f:
         json.dump(history, f, indent=2)
 # In[17]:
 
 
 # Define filename (saves in current directory)
 if __name__ == '__main__':
-    model_path = 'sgdmomentum_resnet56_noskip_cifar10_like_fig1a_Li_et_al.pth'
+    model_path = 'adam_resnet56_noskip_cifar10.pth'
     
     # Save the model
     torch.save({

@@ -372,8 +372,8 @@ def main():
     proj = torch.dot(d2, d1) / (torch.dot(d1, d1) + 1e-12)
     d2 = d2 - proj * d1
 
-    xmin, xmax, xsteps = -1.0, 1.0, 21  # increasing the resolution
-    ymin, ymax, ysteps = -1.0, 1.0, 21 # increasing the resolultion
+    xmin, xmax, xsteps = -1.0, 1.0, 51  # increasing the resolution
+    ymin, ymax, ysteps = -1.0, 1.0, 51 # increasing the resolultion
     xs = np.linspace(xmin, xmax, xsteps)
     ys = np.linspace(ymin, ymax, ysteps)
 
@@ -529,7 +529,7 @@ def plot_1d_loss_landscape(
     direction=None,
     xmin=-1.0,
     xmax=1.0,
-    steps=21,
+    steps=51,
     bn_batches=5,
     eval_batches=10,
     save_path=None,

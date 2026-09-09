@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-RESULT_DIR = "results/1d_sgd_nesterov"
-OUTPUT_DIR = "plots/1d_sgd_nesterov"
+RESULT_DIR = "results/1d_sgd_no_momentum"
+OUTPUT_DIR = "plots/1d_sgd_momentum"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
