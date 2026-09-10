@@ -1,0 +1,3 @@
+experiment,epoch,num_images,landscape_split,bn_mode,target_layer,epsilon_alpha,epsilon_beta,center_loss,lambda_min,lambda_max,anisotropy,mean_grad_cam_sensitivity,std_grad_cam_sensitivity,mean_signed_grad_cam_sensitivity,prediction_stability,selected_image_accuracy
+sgd_no_momentum,150,20,test_Z,match_landscape,last_conv2d,0.10000000000000009,0.10000000000000009,0.4471897780895233,1.4892469669818396,2.0484973166943017,1.3755255925387975,0.001440197618739121,0.0024941179601687766,0.001440197618739121,0.9,0.85
+sgd_no_momentum,300,20,test_Z,match_landscape,last_conv2d,0.10000000000000009,0.10000000000000009,0.5039632320404053,2.0877010961247042,3.2750301222132987,1.5687255844682815,0.004882116183241153,0.011737157001633523,0.004882116183241153,0.9625,0.9
